@@ -1,0 +1,45 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="link-back">
+     <a routerLink="/search" class="badge badge-danger ">Regresar</a>
+</div>
+
+<div class="row">
+     <div class="col-md text-center">
+          <img [src]="artista.images | noimage" alt="{{artista.name}}" class="img-thumbnail img-circle">
+     </div>
+     <div class="col-md text-center">
+          <h1>{{artista.name}}</h1>
+          <p>
+               <a routerLink="artista.external_urls.spotify" target="_blank">
+                    Open from spotify
+               </a>
+          </p>
+     </div>
+     
+</div>
+
+<div class="row mt-4">
+     <div class="col">
+          <table class="table table-transparent text-white">
+               <thead>
+                    <tr>
+                         <th class="text-center">Foto</th>
+                         <th>Cancion</th>
+                         <th>Artistas</th>
+                         <th>Album</th>
+                         <th>Vista Previa</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    <tr *ngFor="let track of topTracks">
+                         <th><img scope="row" class="img-track rounded mx-auto d-block" src="{{track.album.images | noimage}}" alt=""></th>
+                         <td class="align-middle">{{track.name}}</td>
+                         <td class="align-middle"><a [routerLink]="artista.external_urls.spotify" class="text-white" *ngFor="let artista of track.artists"  target="_blank">{{artista.name}} </a></td>
+                         <td class="align-middle">{{track.album.name}}</td>
+                         <td><iframe [src]="track.uri | domseguro: 'https://open.spotify.com/embed/?uri='" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
+                    </tr>
+               </tbody>
+          </table>
+     </div>
+</div>

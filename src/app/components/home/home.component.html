@@ -1,0 +1,8 @@
+<h3>Nuevos Lanzamientos</h3>
+<app-loading class="pt-5" *ngIf="loading"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+     <h3>Ha ocurrido un error</h3>
+     <p>{{mensajeError}}</p>
+</div>
+<app-tarjeta [items] = "nuevasCanciones"></app-tarjeta>

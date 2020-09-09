@@ -1,0 +1,14 @@
+<div class="card-columns mt-4 animated fadeIn">
+     <div *ngFor="let item of items" class="card puntero" (click)="verArtista(item)">
+       <img [src]="item.images | noimage" class="card-img-top" alt="{{item.name}}">
+       <div class="card-body">
+         <h5 class="card-title">{{item.name}}</h5>
+         <p class="card-text">
+       <span *ngFor="let artista of item.artists" class="badge badge-pill badge-primary">{{artista.name}}</span>
+      </p>
+      <p class="card-text text-muted">
+        Lanzamiento:  {{item.release_date | date:'dd/MM/yyyy'}}
+      </p>
+       </div>
+     </div>
+   </div>
